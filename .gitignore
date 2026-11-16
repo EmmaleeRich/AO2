@@ -1,3 +1,5 @@
 .env
 .env.*
+!.env.example
+public/*.env
 node_modules/
