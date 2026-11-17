@@ -2,17 +2,18 @@
 <html>
 <head>
     <title>Works</title>
-    <link rel='stylesheet' href='public/stylesheets/style.css' />
+    <link rel='stylesheet' href='public/stylesheets/style.css'/>
 </head>
 <body>
 <header>
-        <h1>ArchiveOfJustUsTwo</h1>
-        <a href='/'>Home</a>
-        <a href='/publish'>Publish</a>
-        <a href='/login'>Login</a>
+    <div>
+    <h1>ArchiveOfJustUsTwo</h1>
+    <a href='/'>Home</a>
+    <a href='/publish'>Publish</a>
+    <a href='/login'>Login</a>
+    </div>
 </header>
-<% console.log("Console log") %>
-<h2><%= filter ?? 'All Works'%></h2>
+<h2><%= filter ?? 'All Works' %></h2>
 <form action="/" method="GET">
     <label for="searchInput"></label>
     <input type="text" id="searchInput" value="<%= filter %>">
@@ -26,16 +27,32 @@
     </select>
 </form>
 <p>Showing <%= works.length %> of <%= totalWorksCount %></p>
-<% for (work in works) { %>
+<!--TODO: Fix Links-->
+<% for (work of works) { %>
+    <% console.log(work) %>
     <article>
-        <h2><%= work.title %></h2>
-        <h3>By: <%= work.author %></h3>
-        <h4>Fandoms: <% for (tag in work.fandoms) { %>
-             <%= tag %>,
+        <h2><a href="/work"><%= work.title %></a></h2>
+        <h3><a href="/works">By: <%= work.author %></a></h3>
+        <div>
+        <h4>Fandoms: </h4>
+            <% for (tag of work.fandoms) { %>
+                <a href="<%= tag %>"><%= tag %></a>,
             <% } %>
-        </h4>
+        </div>
+        <div>
+        <h4>Relationships: </h4>
+            <% for (tag of work.relationships) { %>
+                <a href="<%= tag %>"><%= tag %></a>,
+            <% } %>
+        </div>
+        <div>
+        <h4>Tags: </h4>
+            <% for (tag of work.tags) { %>
+                <a href="<%= tag %>"><%= tag %></a>,
+            <% } %>
+        </div>
     </article>
 <% } %>
-
+<div class="footer"></div>
 </body>
 </html>
