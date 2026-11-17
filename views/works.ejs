@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Works</title>
-    <link rel='stylesheet' href='public/stylesheets/style.css'/>
-</head>
-<body>
-<header>
-    <div>
-    <h1>ArchiveOfJustUsTwo</h1>
-    <a href='/'>Home</a>
-    <a href='/publish'>Publish</a>
-    <a href='/login'>Login</a>
-    </div>
-</header>
+<%- include('partials/header.ejs') %>
+
 <h2><%= filter ?? 'All Works' %></h2>
 <form action="/" method="GET">
     <label for="searchInput"></label>
@@ -52,6 +39,5 @@
         </div>
     </article>
 <% } %>
-<div class="footer"></div>
-</body>
-</html>
+
+<%- include('partials/footer.ejs') %>
