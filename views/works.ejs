@@ -19,19 +19,18 @@
     <input type="text" id="searchInput" value="<%= filter %>">
     <button type="submit">Search</button>
     <select id="searchTypeSelect">
-        <option value="title">Title</option>
-        <option value="author">Author</option>
-        <option value="fandom">Fandom</option>
-        <option value="relationship">Relationship</option>
-        <option value="tag">Tag</option>
+        <option value="title" <%= "title" === filterType ? 'selected' : '' %>>Title</option>
+        <option value="author" <%= "author" === filterType ? 'selected' : '' %>>Author</option>
+        <option value="fandom" <%= "fandom" === filterType ? 'selected' : '' %>>Fandom</option>
+        <option value="relationship" <%= "relationship" === filterType ? 'selected' : '' %>>Relationship</option>
+        <option value="tag" <%= "tag" === filterType ? 'selected' : '' %>>Tag</option>
     </select>
 </form>
 <p>Showing <%= works.length %> of <%= totalWorksCount %></p>
 <!--TODO: Fix Links-->
 <% for (work of works) { %>
-    <% console.log(work) %>
     <article>
-        <h2><a href="/work"><%= work.title %></a></h2>
+        <h3><a href="/work"><%= work.title %></a></h3>
         <h3><a href="/works">By: <%= work.author %></a></h3>
         <div>
         <h4>Fandoms: </h4>
