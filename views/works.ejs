@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Works</title>
+    <link rel='stylesheet' href='public/stylesheets/style.css' />
+</head>
+<body>
+<header>
+        <h1>ArchiveOfJustUsTwo</h1>
+        <a href='/'>Home</a>
+        <a href='/publish'>Publish</a>
+        <a href='/login'>Login</a>
+</header>
+<% console.log("Console log") %>
+<h2><%= filter ?? 'All Works'%></h2>
+<form action="/" method="GET">
+    <label for="searchInput"></label>
+    <input type="text" id="searchInput" value="<%= filter %>">
+    <button type="submit">Search</button>
+    <select id="searchTypeSelect">
+        <option value="title">Title</option>
+        <option value="author">Author</option>
+        <option value="fandom">Fandom</option>
+        <option value="relationship">Relationship</option>
+        <option value="tag">Tag</option>
+    </select>
+</form>
+<p>Showing <%= works.length %> of <%= totalWorksCount %></p>
+<% for (work in works) { %>
+    <article>
+        <h2><%= work.title %></h2>
+        <h3>By: <%= work.author %></h3>
+        <h4>Fandoms: <% for (tag in work.fandoms) { %>
+             <%= tag %>,
+            <% } %>
+        </h4>
+    </article>
+<% } %>
+
+</body>
+</html>

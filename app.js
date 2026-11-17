@@ -51,21 +51,21 @@ const connDb = async () => {
   }
 }
 
-const workSchema = new Schema({
-  _id: {String, required: true},
-  title: {String, required: true},
-  fandomTags: {Array, required: true},
-  relationshipTags: {Array, required: true},
-  generalTags: {Array, required: true},
-  authorId: {String, required: true},
-  published: {Date, required: true},
-  lastEdited: {Date, required: true},
-  chapters: {Array, required: true},
-  summary: {String, required: true},
-  likes: {Int32},
-  comments: {Array},
-  anonymous: {Boolean, required: true},
-  userLikes: {Array, required: true},
+const workSchema = new mongoose.Schema({
+  _id: {type: String, required: true},
+  title: {type: String, required: true},
+  fandomTags: {type: Array, required: true},
+  relationshipTags: {type: Array, required: true},
+  generalTags: {type: Array, required: true},
+  authorId: {type: String, required: true},
+  published: {type: Date, required: true},
+  lastEdited: {type: Date, required: true},
+  chapters: {type: Array, required: true},
+  summary: {type: String, required: true},
+  likes: {type: Int32},
+  comments: {type: Array},
+  anonymous: {type: Boolean, required: true},
+  userLikes: {type: Array, required: true},
 })
 
 const Work = new mongoose.model("Works", workSchema);
