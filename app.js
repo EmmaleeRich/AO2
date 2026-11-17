@@ -3,9 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const mongoose = require('mongoose');
-const {Schema} = require("mongoose");
-const {Int32} = require("mongodb");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -40,16 +37,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-const url = process.env.CONNECTION_URL;
-const connDb = async () => {
-  try {
-    await mongoose.connect(url);
-    console.log('Connected to MongoDB Cloud');
-  } catch (error) {
-    console.log('Database connection failure', error);
-  }
-}
 
 const workSchema = new mongoose.Schema({
   _id: {type: String, required: true},
