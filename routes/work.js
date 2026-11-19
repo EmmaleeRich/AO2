@@ -1,13 +1,12 @@
-var express = require('express');
+import express from 'express';
 var router = express.Router();
-import { connDb } from '../db.js';
-import {Work_Schema} from '/model/work_schema'
+import {connDb} from '../db.js';
+import {Work} from '../model/work_schema.js'
 
-const db = connDb
-const collection = db.collection(process.env.WORKS_COLLECTION);
+const collection = connDb.collection(process.env.WORKS_COLLECTION);
 
-const work = await Work_Schema.findOne({_id: })
-const chapter_array = ["I am going to end the world. One step at a time", "This will wake a long time"];
+const work = collection.findOne({_id: "6aff3dc9f77e28f031c31287"});
+const chapter_array = work.chapters
 
 router.get('/', function(req, res, next) {
     res.render('work',{ title: 'Work', story_name: "Work Rendered", author: "Steve", chapter_name: "Save Me",

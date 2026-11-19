@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const {Int32} = require("mongodb");
+import {Int32} from "mongodb"
 
 const workSchema = new mongoose.Schema({
     _id: {type: String, required: true},
@@ -18,4 +18,4 @@ const workSchema = new mongoose.Schema({
     userLikes: {type: Array, required: true},
 })
 
-export const Work_Schema = new mongoose.model("Works", workSchema);
+export const Work = new mongoose.model("Works", workSchema);
