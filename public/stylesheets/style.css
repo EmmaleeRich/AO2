@@ -59,7 +59,7 @@ input{
 
 .searchButton {
   height: 25px;
-  margin: 0 20px 0 0px;
+  margin: 0 20px 0 0;
   background: #00651d;
   color: #fff;
   width: 75px;
