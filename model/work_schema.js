@@ -18,4 +18,4 @@ const workSchema = new mongoose.Schema({
     userLikes: {type: Array, required: true},
 })
 
-const Work_schema = new mongoose.model("Works", workSchema);
+export const Work_Schema = new mongoose.model("Works", workSchema);

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const url = process.env.CONNECTION_URL;
-const connDb = async () => {
+export const connDb = async () => {
     try {
         await mongoose.connect(url);
         console.log('Connected to MongoDB Cloud');
