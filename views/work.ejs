@@ -1,7 +1,5 @@
-<!DOCTYPE html>
+<%- include('partials/header.ejs') %>
 
-<body>
-    <button id="home" type="button" onclick="location.href='/'">Home</button>
     <h1><%=story_name%></h1>
     <h2><%=author%></h2>
     <div class="page">
@@ -10,6 +8,7 @@
     </div>
     <button id="previous" type="button">&larr;Previous</button>
     <button id="next" type="button">Next&rarr;</button>
-</body>
-</html>
+
+<%- include('partials/footer.ejs') %>
+
 

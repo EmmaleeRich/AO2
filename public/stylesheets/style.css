@@ -1,8 +1,105 @@
 body {
-  padding: 50px;
+  /*padding: 50px;*/
+  margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #fbfffd;
+}
+a{
+  text-decoration: none;
+}
+a:hover {
+  background-color: #efefef;
 }
 
-a {
-  color: #00B7FF;
+/*#region Header*/
+header {
+  background: #004a16;
+  justify-content: space-between;
+  padding: 16px;
 }
+
+header h1 {
+  font-size: 30px;
+  margin: 5px;
+  display: inline-block;
+  color: #ffffff;
+}
+
+header a {
+  color: #ffffff;
+  font-size: 16px;
+  padding: 0 15px;
+}
+header a:hover {
+  color: #dae6e3;
+  background: #004a16;
+}
+
+.header-links{
+  padding-left: 20px;
+}
+
+/*#endregion*/
+
+.shownCount {
+  margin: 10px 20px;
+}
+
+h2 {
+  font-size: 24px;
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 0 20px;
+}
+
+input{
+  margin: 0 20px;
+  height: 20px;
+  width: 70%;
+}
+
+.searchButton {
+  height: 25px;
+  margin: 0 20px 0 0px;
+  background: #00651d;
+  color: #fff;
+  width: 75px;
+}
+
+#searchTypeSelect{
+  height: 25px;
+}
+
+.card {
+  padding: 20px;
+  margin: 20px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  font-family: MS, Geneva, Tahoma, sans-serif;
+  background-color: #fff;
+}
+
+.card h3{
+  font-size: 22px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.card h3 a{
+  text-decoration-line: underline;
+}
+
+.card div{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.card h4{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.card div a{
+  padding-left: 5px;
+}
+

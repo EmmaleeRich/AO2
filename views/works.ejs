@@ -4,7 +4,7 @@
 <form action="/" method="GET">
     <label for="searchInput"></label>
     <input type="text" id="searchInput" value="<%= filter %>">
-    <button type="submit">Search</button>
+    <button type="submit" class="searchButton">Search</button>
     <select id="searchTypeSelect">
         <option value="title" <%= "title" === filterType ? 'selected' : '' %>>Title</option>
         <option value="author" <%= "author" === filterType ? 'selected' : '' %>>Author</option>
@@ -13,22 +13,21 @@
         <option value="tag" <%= "tag" === filterType ? 'selected' : '' %>>Tag</option>
     </select>
 </form>
-<p>Showing <%= works.length %> of <%= totalWorksCount %></p>
+<p class="shownCount">Showing <%= works.length %> of <%= totalWorksCount %></p>
 <!--TODO: Fix Links-->
 <% for (work of works) { %>
-    <article>
-        <h3><a href="/work"><%= work.title %></a></h3>
-        <h3><a href="/works">By: <%= work.author %></a></h3>
+    <article class="card">
+        <h3><a href="/work"><%= work.title %></a> by <a href="/works"><%= work.author %></a></h3>
         <div>
         <h4>Fandoms: </h4>
             <% for (tag of work.fandoms) { %>
-                <a href="<%= tag %>"><%= tag %></a>,
+                <a href="<%= tag %>"> <%= tag %></a>,
             <% } %>
         </div>
         <div>
         <h4>Relationships: </h4>
             <% for (tag of work.relationships) { %>
-                <a href="<%= tag %>"><%= tag %></a>,
+                  <a href="<%= tag %>"><%= tag %></a>,
             <% } %>
         </div>
         <div>
