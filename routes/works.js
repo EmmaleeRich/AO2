@@ -1,7 +1,7 @@
 var express = require('express');
 // import express from "express";
 var router = express.Router();
-var {Work} = require("../model/work_schema.js");
+var Work = require("../model/work_schema.js");
 
 router.get('/', async function (req, res) {
     let works = await Work.find().sort('-created');

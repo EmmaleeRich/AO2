@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
+require('dotenv').config();
 
-const url = process.env.CONNECTION_URL;
 const connDb = () => {
+    const url = process.env.CONNECTION_URL;
     try {
         mongoose.connect(url);
         console.log('Connected to MongoDB Cloud');

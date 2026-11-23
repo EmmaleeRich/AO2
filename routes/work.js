@@ -1,10 +1,6 @@
 var express = require('express');
 var router = express.Router();
-// import {connDb} from '../db.js';
-var {Work} = require('../model/work_schema.js');
-// import {Work} from '../model/work_schema.js'
-
-// const collection = connDb.collection(process.env.WORKS_COLLECTION);
+var Work = require('../model/work_schema.js');
 
 const work = Work.findOne({_id: "6aff3dc9f77e28f031c31287"});
 const chapter_array = work.chapters
