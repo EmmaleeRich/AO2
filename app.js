@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var {connDb, disconnect} = require('./db.js');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -41,5 +42,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 })
+
+connDb();
 
 module.exports = app;

@@ -1,11 +1,17 @@
-import { mongoose } from 'mongoose';
+var mongoose = require('mongoose');
 
 const url = process.env.CONNECTION_URL;
-export const connDb = async () => {
+const connDb = () => {
     try {
-        await mongoose.connect(url);
+        mongoose.connect(url);
         console.log('Connected to MongoDB Cloud');
     } catch (error) {
         console.log('Database connection failure', error);
     }
 }
+
+const disconnect = () => {
+    mongoose.disconnect();
+}
+
+module.exports = {connDb, disconnect}
