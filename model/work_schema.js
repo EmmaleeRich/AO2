@@ -1,5 +1,4 @@
-import mongoose from "mongoose";
-import {Int32} from "mongodb"
+var mongoose = require('mongoose');
 
 const workSchema = new mongoose.Schema({
     _id: {type: String, required: true},
@@ -12,10 +11,10 @@ const workSchema = new mongoose.Schema({
     lastEdited: {type: Date, required: true},
     chapters: {type: Array, required: true},
     summary: {type: String, required: true},
-    likes: {type: Int32},
+    likes: {type: Number},
     comments: {type: Array},
     anonymous: {type: Boolean, required: true},
     userLikes: {type: Array, required: true},
 })
 
-export const Work = new mongoose.model("Works", workSchema);
+module.exports = mongoose.model("Works", workSchema);

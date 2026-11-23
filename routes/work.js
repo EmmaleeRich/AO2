@@ -1,11 +1,12 @@
-import express from 'express';
+var express = require('express');
 var router = express.Router();
-import {connDb} from '../db.js';
-import {Work} from '../model/work_schema.js'
+// import {connDb} from '../db.js';
+var {Work} = require('../model/work_schema.js');
+// import {Work} from '../model/work_schema.js'
 
-const collection = connDb.collection(process.env.WORKS_COLLECTION);
+// const collection = connDb.collection(process.env.WORKS_COLLECTION);
 
-const work = collection.findOne({_id: "6aff3dc9f77e28f031c31287"});
+const work = Work.findOne({_id: "6aff3dc9f77e28f031c31287"});
 const chapter_array = work.chapters
 
 router.get('/', function(req, res, next) {
