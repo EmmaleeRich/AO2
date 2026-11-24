@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
+const {ObjectId} = require("mongodb");
 
 const workSchema = new mongoose.Schema({
-    _id: {type: String, required: true},
+    _id: {type: ObjectId, required: true},
     title: {type: String, required: true},
     fandomTags: {type: Array, required: true},
     relationshipTags: {type: Array, required: true},

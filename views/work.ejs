@@ -3,12 +3,14 @@
     <h1><%=story_name%></h1>
     <h2><%=author%></h2>
     <div class="page">
-        <h2><%=chapter_name%></h2>
-        <p><%=text_array[1]%></p>
+        <h2>New Journey</h2>
+        <h3><%=text_array[0]['title']%></h3>
+        <p><%=text_array[0]['text']%></p>
     </div>
-    <button id="previous" type="button">&larr;Previous</button>
-    <button id="next" type="button">Next&rarr;</button>
-
+    <form action="/work/<%=%>">
+        <button id="previous" type="button">&larr;Previous</button>
+    </form>
+        <button id="next" type="button">Next&rarr;</button>
 <%- include('partials/footer.ejs') %>
 
 
