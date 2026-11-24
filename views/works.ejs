@@ -14,7 +14,6 @@
     </select>
 </form>
 <p class="shownCount">Showing <%= works.length %> of <%= totalWorksCount %></p>
-<!--TODO: Fix Links-->
 <% for (work of works) { %>
     <article class="card">
         <h3><a href="/work"><%= work.title %></a> by <a href="/works"><%= work.author %></a></h3>
