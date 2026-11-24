@@ -4,7 +4,8 @@ var router = express.Router();
 var Work = require("../model/work_schema.js");
 
 router.get('/', async function (req, res) {
-    let works = await Work.find().sort('-created');
+    let works = await Work.find({}).lean();
+    console.log(works);
     const filter = req.query.filter ?? null;
     const filterType = filter ? req.query.filterType : null;
     const totalWorksCount = works.length ?? 0;

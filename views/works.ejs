@@ -19,19 +19,19 @@
         <h3><a href="/work"><%= work.title %></a> by <a href="/works"><%= work.author %></a></h3>
         <div>
         <h4>Fandoms: </h4>
-            <% for (tag of work.fandoms) { %>
+            <% for (tag of work.fandomTags) { %>
                 <a href="<%= tag %>"> <%= tag %></a>,
             <% } %>
         </div>
         <div>
         <h4>Relationships: </h4>
-            <% for (tag of work.relationships) { %>
+            <% for (tag of work.relationshipTags) { %>
                   <a href="<%= tag %>"><%= tag %></a>,
             <% } %>
         </div>
         <div>
-        <h4>Tags: </h4>
-            <% for (tag of work.tags) { %>
+        <h4>Tags: </h4> 
+            <% for (tag of work.generalTags) { %>
                 <a href="<%= tag %>"><%= tag %></a>,
             <% } %>
         </div>
