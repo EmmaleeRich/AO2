@@ -5,11 +5,10 @@ var Work = require("../model/work_schema.js");
 
 router.get('/', async function (req, res) {
     let works = await Work.find({}).lean();
-    console.log(works);
     const filter = req.query.filter ?? null;
-    const filterType = filter ? req.query.filterType : null;
-    const totalWorksCount = works.length ?? 0;
+    const filterType = req.query.filterType ?? null;
     works = filterWorks(works, filterType, filter);
+    const totalWorksCount = works.length ?? 0;
     res.render('works', {filter, filterType, totalWorksCount, works});
 })
 /* GET home page. */
@@ -29,11 +28,12 @@ const filterWorks = (works, filterType, filter) => {
     }else if (filterType === "author") {
         works = works.filter(work => work.author.toLowerCase().includes(filter.toLowerCase()));
     }else if (filterType === "fandom") {
-        works = works.filter(work => work.fandoms.some(tag => tag.toLowerCase().includes(filter.toLowerCase())));
+        console.log(works)
+        works = works.filter(work => work.fandomTags.some(tag => tag.toLowerCase().includes(filter.toLowerCase())));
     }else if (filterType === "relationship") {
-        works = works.filter(work => work.relationships.some(tag => tag.toLowerCase().includes(filter.toLowerCase())));
+        works = works.filter(work => work.relationshipTags.some(tag => tag.toLowerCase().includes(filter.toLowerCase())));
     }else if (filterType === "tag") {
-        works = works.filter(work => work.tags.some(tag => tag.toLowerCase().includes(filter.toLowerCase())));
+        works = works.filter(work => work.generalTags.some(tag => tag.toLowerCase().includes(filter.toLowerCase())));
     }
     return works;
 }

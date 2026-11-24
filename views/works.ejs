@@ -1,12 +1,13 @@
 <%- include('partials/header.ejs') %>
 
 <h2><%= filter ?? 'All Works' %></h2>
-<form action="/" method="GET">
+<form action="/works" method="GET">
     <label for="searchInput"></label>
-    <input type="text" id="searchInput" value="<%= filter %>">
+    <input type="text" id="searchInput" name="filter" value="<%= filter %>">
     <button type="submit" class="searchButton">Search</button>
-    <select id="searchTypeSelect">
+    <select id="searchTypeSelect" name="filterType">
         <option value="title" <%= "title" === filterType ? 'selected' : '' %>>Title</option>
+<!--        TODO: FIX AUTHOR SEARCH-->
         <option value="author" <%= "author" === filterType ? 'selected' : '' %>>Author</option>
         <option value="fandom" <%= "fandom" === filterType ? 'selected' : '' %>>Fandom</option>
         <option value="relationship" <%= "relationship" === filterType ? 'selected' : '' %>>Relationship</option>
@@ -20,19 +21,19 @@
         <div>
         <h4>Fandoms: </h4>
             <% for (tag of work.fandomTags) { %>
-                <a href="<%= tag %>"> <%= tag %></a>,
+                <a href="/works?filterType=fandom&filter=<%= encodeURIComponent(tag) %>"> <%= tag %></a>,
             <% } %>
         </div>
         <div>
         <h4>Relationships: </h4>
             <% for (tag of work.relationshipTags) { %>
-                  <a href="<%= tag %>"><%= tag %></a>,
+                  <a href="/works?filterType=relationship&filter=<%= encodeURIComponent(tag) %>"><%= tag %></a>,
             <% } %>
         </div>
         <div>
         <h4>Tags: </h4> 
             <% for (tag of work.generalTags) { %>
-                <a href="<%= tag %>"><%= tag %></a>,
+                <a href="/works?filterType=tag&filter=<%= encodeURIComponent(tag) %>"><%= tag %></a>,
             <% } %>
         </div>
         <p><%= work.summary %></p>
