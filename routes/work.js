@@ -11,6 +11,7 @@ router.get('/', async function (req, res, next) {
         const chapter_array = work.chapters;
 
         res.render('work', {
+            pageTitle: work.title,
             story_name: work.title,
             author: work.authorId,
             text_array: chapter_array

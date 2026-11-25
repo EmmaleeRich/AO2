@@ -9,7 +9,7 @@ router.get('/', async function (req, res) {
     const filterType = req.query.filterType ?? null;
     works = filterWorks(works, filterType, filter);
     const totalWorksCount = works.length ?? 0;
-    res.render('works', {filter, filterType, totalWorksCount, works});
+    res.render('works', {filter, filterType, totalWorksCount, works, pageTitle: 'Works'});
 });
 
 
