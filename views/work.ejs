@@ -1,16 +1,45 @@
 <%- include('partials/header.ejs') %>
-
-    <h1><%=story_name%></h1>
-    <h2><%=author%></h2>
+<% let chapterNum = 0%>
+    <h1 id="story_name"><%=story_name%></h1>
+    <h2 id="author_name"><%=author%></h2>
     <div class="page">
-        <h2>New Journey</h2>
-        <h3><%=text_array[0]['title']%></h3>
-        <p><%=text_array[0]['text']%></p>
+        <h2 id="chapter_title"><%=text_array[chapterNum]['title']%></h2>
+        <p id="chapter_text"><%=text_array[chapterNum]['text']%></p>
     </div>
-    <form action="/work/<%=%>">
-        <button id="previous" type="button">&larr;Previous</button>
-    </form>
-        <button id="next" type="button">Next&rarr;</button>
+
+    <button id="previous" type="button">&larr;Previous</button>
+    <button id="next" type="button">Next&rarr;</button>
+
+<script>
+        let chapterNum = <%- chapterNum %>;
+        let text_array = <%- JSON.stringify(text_array) %>;
+
+        let title = document.getElementById('chapter_title');
+        let text = document.getElementById('chapter_text');
+        let previous = document.getElementById('previous');
+        let next = document.getElementById('next');
+
+        function render() {
+            title.textContent = text_array[chapterNum]['title'];
+            text.textContent = text_array[chapterNum]['text'];
+            previous.disabled = chapterNum === 0;
+            next.disabled = chapterNum === text_array.length - 1;
+        }
+
+        previous.addEventListener('click', () => {
+            if (chapterNum !== 0) {
+                chapterNum--
+                render()
+            }
+        });
+        next.addEventListener('click', () => {
+            if (!(chapterNum > (text_array.length - 1))) {
+                chapterNum++
+                render()
+            }
+        });
+        render()
+</script>
 <%- include('partials/footer.ejs') %>
 
 
