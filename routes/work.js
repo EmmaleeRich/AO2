@@ -2,10 +2,11 @@ var express = require('express');
 var router = express.Router();
 var Work = require('../model/work_schema.js');
 
-router.get('/', async function (req, res, next) {
+router.get('/:id', async function (req, res, next) {
     try {
+        console.log(req.params.id);
         const work = await Work.findById(
-            '6b0465bd499cf339515faaf8' ,
+            req.params.id,
             'title chapters -_id'
         ).lean();
         const chapter_array = work.chapters;
