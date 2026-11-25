@@ -17,7 +17,7 @@
 <p class="shownCount">Showing <%= works.length %> of <%= totalWorksCount %></p>
 <% for (work of works) { %>
     <article class="card">
-        <h3><a href="/work"><%= work.title %></a> by <a href="/works"><%= work.author %></a></h3>
+        <h3><a href="/work/<%= work._id %>"><%= work.title %></a> by <a href="/works"><%= work.author %></a></h3>
         <div>
         <h4>Fandoms: </h4>
             <% for (tag of work.fandomTags) { %>
