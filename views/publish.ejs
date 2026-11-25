@@ -1,0 +1,36 @@
+<%- include('partials/header.ejs') %>
+
+<form action="/publish/<%= workID ?? "new" %>" method="POST">
+    <label for="titleInput">Title: </label>
+    <input type="text" id="titleInput" name="title">
+    <label for="anonCheckbox">Publish Anonymously </label>
+    <input type="checkbox" id="anonCheckbox" name="anonymous">
+    <label for="fandomInput">Fandoms: </label>
+    <input type="text" id="fandomInput" name="fandomTags">
+    <label for="relationshipInput">Relationships: </label>
+    <input type="text" id="relationshipInput" name="relationshipTags">
+    <label for="tagInput">Tags: </label>
+    <input type="text" id="tagInput" name="generalTags">
+    <label for="summaryInput">Summary: </label>
+    <input type="text" id="summaryInput" name="summary">
+
+    <h3>Chapters</h3>
+
+    <% for (let i = 1; i <= chapters.length; i++) { %>
+        <article class="chapterInputBlock">
+            <h4>Chapter <%= i %></h4>
+            <label for="chapterTitleInput<%= i %>">Title: </label>
+            <input type="text" id="chapterTitleInput<%= i %>" name="chapter[<%= i %>].title" value="<%= chapters[i - 1].title %>">
+            <label for="chapterTextInput<%= i %>"></label>
+            <input type="text" id="chapterTextInput<%= i %>" name="chapter[<%= i %>].text" value="<%= chapters[i - 1].text %>">
+        </article>
+    <% } %>
+        <button type="submit" formaction="/publish/<%= workID ?? "new" %>/add-chapter" formmethod="POST">Add Chapter</button>
+    <% if (chapters.length > 1){ %>
+        <button type="submit" formaction="/publish/<%= workID ?? "new" %>/remove-chapter" formmethod="POST">Remove Chapter</button>
+    <% } %>
+    <button type="submit">Publish</button>
+
+</form>
+
+<%- include('partials/footer.ejs') %>
