@@ -4,11 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var {connDb, disconnect} = require('./db.js');
+var auth = require("@auth/express");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var worksRouter = require('./routes/works');
 var workRouter = require('./routes/work');
+const {ExpressAuth} = require("@auth/express");
 
 var app = express();
 
@@ -26,6 +28,9 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/works', worksRouter);
 app.use('/work', workRouter);
+
+app.set("trust proxy", true);
+app.use("/auth/*", ExpressAuth({providers: []}));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
